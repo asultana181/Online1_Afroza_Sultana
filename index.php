@@ -1,11 +1,43 @@
-<h1>Airplane Management System</h1>
+<?php
+echo "<h1>Airplane Management System</h1>";
 
 
 
-Database: airplane_management<br>
+echo "Database: airplane_management<br>";
 
-Table: ticket_booking<br><br>
+echo "Table: ticket_booking<br><br>";
 
-<a href=addBooking.php>AddBooking</a> <br>
-<a href=cancelBooking.php>CancelBooking</a>
+
+
+    require_once('dbconfig.php');
+	$connect = mysqli_connect( HOST, USER, PASS, DB )
+		or die("Can not connect");
+
+
+	$results = mysqli_query( $connect, "SELECT * FROM t0" )
+		or die("Can not execute query");
+
+	echo "<table border> \n";
+	echo "<th>Name</th> <th>Date</th> <th>From</th> <th>To</th> <th>Status</th> \n";
+
+	while( $rows = mysqli_fetch_array( $results ) ) {
+		extract( $rows );
+		echo "<tr>";
+		echo "<td> $name </td>";
+		echo "<td> $appt_date </td>";
+        echo "<td> $from_location </td>";
+        echo "<td> $to_location </td>";
+        echo "<td> $status </td>";
+		echo "</tr> \n";
+	}
+
+	echo "</table> \n";
+
+    
+
+
+echo "<a href=appt_input.php>AddBooking</a> <br>";
+echo "<a href=cancelBooking.php>CancelBooking</a>";
+
+?>
 
