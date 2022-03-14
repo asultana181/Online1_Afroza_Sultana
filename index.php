@@ -14,7 +14,7 @@ echo "Table: ticket_booking<br><br>";
 		or die("Can not connect");
 
 
-	$results = mysqli_query( $connect, "SELECT * FROM t0" )
+	$results = mysqli_query( $connect, "SELECT * FROM ticket_booking" )
 		or die("Can not execute query");
 
 	echo "<table border> \n";
